@@ -15,7 +15,7 @@ class GridGame:
             self.grid[y][x] = 1
 
         self.playerxy = playerxy
-        self.goal = goal or width - 1, height - 1
+        self.goal = goal or (width - 1, height - 1)
 
         self.moves = 0
         self.maxmoves = moves or width + height

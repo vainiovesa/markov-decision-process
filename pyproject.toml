@@ -1,0 +1,17 @@
+[project]
+name = "markov-decision-process"
+version = "0.1.0"
+description = "Find paths through grids with a Markov decision process."
+authors = [
+    {name = "vainiovesa",email = "vesa.vainio@helsinki.fi"}
+]
+readme = "README.md"
+requires-python = "^3.10"
+dependencies = [
+    "pygame-ce (>=2.5.5,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

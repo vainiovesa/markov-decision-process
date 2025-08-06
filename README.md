@@ -15,7 +15,7 @@ G_t=r_t+\gamma\;r_{t+1}+\gamma^2\;r_{t+2}+\gamma^3\;r_{t+3}+\dots
 where $G_t$ is the expected return for the taken action at step $t$, $\gamma$ is a discount factor such that $0\le\gamma\le1$,
 and $r_t$ is the reward for the taken action.
 
-These values are then stored in the agent's memory for building an optimal state-action policy.
+These values are then stored in the agent's memory (representing the action-value function) for building an optimal policy.
 
 ### Instructions
 Clone the repository and install dependencies

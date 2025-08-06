@@ -24,7 +24,12 @@ $ git clone git@github.com:vainiovesa/markov-decision-process.git
 $ cd markov-decision-process
 $ poetry install --no-root
 ```
-Show examples
+Show a couple of examples
 ```console
 $ poetry run python3 main.py
 ```
+
+### Example
+Training info                               | Agent exploiting found policy
+:------------------------------------------:|:-------------------------------------:
+![Example info](resources/example_info.png) | ![Example gif](resources/example.gif)

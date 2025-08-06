@@ -136,7 +136,10 @@ class GridTrainHidden(GridTrain):
 
 def train(grid: GridTrain, iterations: int):
     initial_rand_factor = grid.model.epsilon
+    training_info = []
     for _ in range(iterations):
         states, actions, rewards = grid.play()
+        training_info.append(sum(rewards))
         grid.model.add_trajectory(states, actions, rewards)
         grid.model.epsilon -= initial_rand_factor / iterations
+    return training_info

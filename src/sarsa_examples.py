@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-from sarsa_model import Model, GridTrain, GridTrainHidden, train
+from sarsa_model import Model
+from train import GridTrain, GridTrainHidden, train_sarsa as train
 
 
 def example1():

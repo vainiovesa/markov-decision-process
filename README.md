@@ -16,3 +16,15 @@ where $G_t$ is the expected return for the taken action at step $t$, $\gamma$ is
 and $r_t$ is the reward for the taken action.
 
 These values are then stored in the agent's memory for building an optimal state-action policy.
+
+### Instructions
+Clone the repository and install dependencies
+```console
+$ git clone git@github.com:vainiovesa/markov-decision-process.git
+$ cd markov-decision-process
+$ poetry install --no-root
+```
+Show examples
+```console
+$ poetry run python3 main.py
+```

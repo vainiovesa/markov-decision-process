@@ -67,7 +67,6 @@ class GridTrain(GridGame):
         self.obstacles = obstacles
         self.initial_player_xy = playerxy
         self.model = model
-        self.fps = 1
 
     def actions(self):
         state = self.playerxy
@@ -101,7 +100,7 @@ class GridTrain(GridGame):
                 self.run = False
             else:
                 rewards.append(-1)
-            self.clock.tick(60)
+            self.clock.tick(10)
         self.stop()
         return states, actions, rewards
 
@@ -133,3 +132,11 @@ class GridTrainHidden(GridTrain):
             else:
                 rewards.append(-1)
         return states, actions, rewards
+
+
+def train(grid: GridTrain, iterations: int):
+    initial_rand_factor = grid.model.epsilon
+    for _ in range(iterations):
+        states, actions, rewards = grid.play()
+        grid.model.add_trajectory(states, actions, rewards)
+        grid.model.epsilon -= initial_rand_factor / iterations

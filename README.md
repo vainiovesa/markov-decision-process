@@ -26,7 +26,7 @@ $ poetry install --no-root
 ```
 Show a couple of examples
 ```console
-$ poetry run python3 src/sarsa_examples.py
+$ poetry run python3 src/examples.py
 ```
 
 ### Example

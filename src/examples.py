@@ -1,18 +1,24 @@
 import matplotlib.pyplot as plt
 from sarsa_model import Model
+from q_learning_model import QModel
 from train import GridTrain, GridTrainHidden, train_sarsa as train
 
 
-def create_agent():
+def create_agent(modeltype: str):
+    actions = [0, 1, 2, 3]
     discount_factor = 0.99
     rand_factor = 0.6
-    actions = [0, 1, 2, 3]
-    learning_rate = 0.1
-    return Model(discount_factor, rand_factor, actions, learning_rate)
+    
+    if modeltype == "sarsa":
+        learning_rate = 0.1
+        return Model(discount_factor, rand_factor, actions, learning_rate)
+    
+    learning_rate = 2
+    return QModel(discount_factor, rand_factor, actions, learning_rate)
 
 
-def example1():
-    agent = create_agent()
+def example1(modeltype: str):
+    agent = create_agent(modeltype)
 
     moves = 300
     hidden = GridTrainHidden(agent, moves=moves)
@@ -26,8 +32,8 @@ def example1():
     visible.play()
 
 
-def example2():
-    agent = create_agent()
+def example2(modeltype: str):
+    agent = create_agent(modeltype)
 
     moves = 300
     obstacles = []
@@ -48,8 +54,8 @@ def example2():
     visible.play()
 
 
-def example3():
-    agent = create_agent()
+def example3(modeltype: str):
+    agent = create_agent(modeltype)
 
     moves = 300
     obstacles = []
@@ -82,9 +88,9 @@ def example3():
 
 
 def main():
-    example1()
-    example2()
-    example3()
+    example1("sarsa")
+    example2("sarsa")
+    example3("sarsa")
 
 
 if __name__ == "__main__":

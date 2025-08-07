@@ -3,11 +3,16 @@ from sarsa_model import Model
 from train import GridTrain, GridTrainHidden, train_sarsa as train
 
 
-def example1():
+def create_agent():
     discount_factor = 0.99
     rand_factor = 0.6
     actions = [0, 1, 2, 3]
-    agent = Model(discount_factor, rand_factor, actions)
+    learning_rate = 0.1
+    return Model(discount_factor, rand_factor, actions, learning_rate)
+
+
+def example1():
+    agent = create_agent()
 
     moves = 300
     hidden = GridTrainHidden(agent, moves=moves)
@@ -22,10 +27,7 @@ def example1():
 
 
 def example2():
-    discount_factor = 0.99
-    rand_factor = 0.6
-    actions = [0, 1, 2, 3]
-    agent = Model(discount_factor, rand_factor, actions)
+    agent = create_agent()
 
     moves = 300
     obstacles = []
@@ -47,10 +49,7 @@ def example2():
 
 
 def example3():
-    discount_factor = 0.99
-    rand_factor = 0.6
-    actions = [0, 1, 2, 3]
-    agent = Model(discount_factor, rand_factor, actions)
+    agent = create_agent()
 
     moves = 300
     obstacles = []

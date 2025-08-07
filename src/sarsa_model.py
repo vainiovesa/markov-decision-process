@@ -2,13 +2,15 @@ from random import random, choice
 
 
 class Model:
-    def __init__(self, gamma: float, epsilon: float, actions: list):
+    def __init__(self, gamma: float, epsilon: float, actions: list, learning_rate:float):
         """gamma: discount factor, epsilon: randomization factor"""
         assert 0 <= gamma <= 1
+        assert 0 < learning_rate
         self.gamma = gamma
         self.epsilon = epsilon
         self.actions = actions
         self.memory = {}
+        self.lr = learning_rate
 
     def action_values(self, state):
         if state in self.memory:
@@ -25,6 +27,10 @@ class Model:
     def memory_append(self, state, action: int, ret: float):
         action_values = self.action_values(state)
         returns, n = action_values[action]
+        if n > 0:
+            ret = self.lr * (ret - returns / n)
+        else:
+            ret *= self.lr
         returns, n = returns + ret, n + 1
         action_values[action] = returns, n
         self.memory[state] = action_values

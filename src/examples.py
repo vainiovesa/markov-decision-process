@@ -28,7 +28,7 @@ def example1(modeltype: str):
     plt.ylabel("Reward")
     plt.show()
 
-    visible = GridTrain(agent, moves=moves)
+    visible = GridTrain(agent, moves=25)
     visible.play()
 
 
@@ -50,7 +50,7 @@ def example2(modeltype: str):
     plt.ylabel("Reward")
     plt.show()
 
-    visible = GridTrain(agent, obstacles=obstacles, moves=moves)
+    visible = GridTrain(agent, obstacles=obstacles, moves=25)
     visible.play()
 
 
@@ -83,7 +83,7 @@ def example3(modeltype: str):
     plt.ylabel("Reward")
     plt.show()
 
-    visible = GridTrain(agent, obstacles=obstacles, moves=moves)
+    visible = GridTrain(agent, obstacles=obstacles, moves=50)
     visible.play()
 
 

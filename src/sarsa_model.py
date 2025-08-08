@@ -27,10 +27,11 @@ class Model:
     def memory_append(self, state, action: int, ret: float):
         action_values = self.action_values(state)
         returns, n = action_values[action]
+
         if n > 0:
-            ret = self.lr * (ret - returns / n)
-        else:
-            ret *= self.lr
+            ret = ret - returns / n
+        ret *= self.lr
+
         returns, n = returns + ret, n + 1
         action_values[action] = returns, n
         self.memory[state] = action_values
@@ -48,12 +49,14 @@ class Model:
 
 
 def _calculate_return(rewards: list, gamma: float):
-    returns = [rewards[-1]]
-    rewards = list(reversed(rewards[:-1]))
+    returns = []
 
-    for i, reward in enumerate(rewards):
-        last_ret = returns[-1]
-        returns.append(last_ret + gamma ** i * reward)
+    ret_t_minus_one = 0
+    for i in range(len(rewards)):
+        r_t = rewards[- i - 1]
+        ret = r_t + gamma * ret_t_minus_one
+        returns.append(ret)
+        ret_t_minus_one = ret
 
     returns.reverse()
     return returns
